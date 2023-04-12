@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@media screen and (max-width: 500px) {
+   .navbar .heading{
+        text-align: center;
+        /* width: 40%; */
+   }
+   .navbar .theme{
+    display: flex;
+    flex-direction: column;
+   }
+   .tasks--detail .task--block{
+      width: -webkit-fill-available;
+   }
+   .tasks--detail .inprogress{
+      /* width: 30%; */
+
+   }
+}
