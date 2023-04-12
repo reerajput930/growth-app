@@ -53,7 +53,7 @@ export default function Tasks() {
   useEffect(() => {
     async function fetchAllTasks() {
       //   // e.preventDefault();
-      const response = await fetch("http://localhost:5000/api/miss/progress/alltask");
+      const response = await fetch("https://growth-app-backend.onrender.com/api/miss/progress/alltask");
 
       const data = await response.json();
 
@@ -73,7 +73,7 @@ export default function Tasks() {
 
 
   async function updateTasks(task) {
-    const response = await fetch("http://localhost:5000/api/miss/progress/updatetask", {
+    const response = await fetch("https://growth-app-backend.onrender.com/api/miss/progress/updatetask", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -113,7 +113,7 @@ export default function Tasks() {
   async function del(e, taskId) {
     e.preventDefault()
     console.log(taskId)
-    const response = await fetch("http://localhost:5000/api/miss/progress/remove", {
+    const response = await fetch("https://growth-app-backend.onrender.com/api/miss/progress/remove", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

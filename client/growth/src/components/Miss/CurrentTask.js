@@ -16,7 +16,7 @@ export default function Miss() {
 
   // --------------fetching (get )api-------------
   async function fetchTasks() {
-    const response = await fetch("http://localhost:5000/api/miss/alltodo");
+    const response = await fetch("https://growth-app-backend.onrender.com/api/miss/alltodo");
     const data = await response.json();
     // console.log(data)
     if (data.status === "success") {
@@ -33,7 +33,7 @@ export default function Miss() {
   async function submitted(e) {
     e.preventDefault();
 
-    const response = await fetch("http://localhost:5000/api/miss/addtodo", {
+    const response = await fetch("https://growth-app-backend.onrender.com/api/miss/addtodo", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -51,7 +51,7 @@ export default function Miss() {
     e.preventDefault();
     console.log(_id);
 
-    const response = await fetch("http://localhost:5000/api/miss/removetodo", {
+    const response = await fetch("https://growth-app-backend.onrender.com/api/miss/removetodo", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -65,7 +65,7 @@ export default function Miss() {
   // ------------- update operation put api --------------
   async function updateTask(e, _id, mark) {
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/api/miss/updatetodo", {
+    const response = await fetch("https://growth-app-backend.onrender.com/api/miss/updatetodo", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

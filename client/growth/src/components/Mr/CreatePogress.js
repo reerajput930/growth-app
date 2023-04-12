@@ -14,7 +14,7 @@ export default function CreateTask() {
   async function submitted(e) {
     e.preventDefault();
     console.log(task)
-    const response = await fetch("http://localhost:5000/api/mr/progress/addtask", {
+    const response = await fetch("https://growth-app-backend.onrender.com/api/mr/progress/addtask", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

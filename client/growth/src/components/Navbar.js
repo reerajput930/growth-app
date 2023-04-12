@@ -41,7 +41,7 @@ export default function Navbar() {
 
     // changing theme in the mongodb
     async function updateTheme(value) {
-      const response = await fetch("http://localhost:5000/api/updatetheme", {
+      const response = await fetch("https://growth-app-backend.onrender.com/api/updatetheme", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

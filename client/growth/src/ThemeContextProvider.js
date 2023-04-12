@@ -17,7 +17,7 @@ export function ThemeContextProvider(props) {
 
   useEffect(()=>{
     async function fetchTheme(){
-      const response = await fetch("http://localhost:5000/api/gettheme")
+      const response = await fetch("https://growth-app-backend.onrender.com/api/gettheme")
       const data = await response.json()
       // console.log(data.theme[0].theme)
       const theme = data.theme[0].theme;
