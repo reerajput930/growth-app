@@ -67,7 +67,7 @@ export default function Navbar() {
       </div>
       <Link className="flex justify-center items-center" to={"/"}><div className="heading text-xl  w-[90%] cursor-pointer font-bold">Let's Grow Together!</div></Link>
 
-      <div className="theme text-base mr-1 flex w-[35%] items-center flex-col">
+      <div className="theme text-base mr-1 flex w-[40%] items-center flex-col">
         <span className="font-medium">THEME : <span className="font-semibold" > {localStorage.getItem("theme").toUpperCase()}</span> </span>
         <select className="rounded-md w-[70%] outline-none" onChange={onChange}>
         
