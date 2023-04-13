@@ -1,11 +1,23 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useThemeContext } from "../ThemeContextProvider";
 import "../index.css"
-import img from './img.jpeg'
+import icon1 from './img.jpeg'
+import icon2 from './img2.png'
 
 export default function Navbar() {
    const [colorLoading,setcolorLoading] = useState(false)
+   const [img2,setImg2] =useState(false)
+   
+
+   useEffect(()=>{
+
+     setImg2(localStorage.getItem("img2")) 
+     
+   },[])
+
+
+
   const theme = useThemeContext();
   const { changeTheme } = theme;
 
@@ -36,10 +48,7 @@ export default function Navbar() {
     }
     applytheme = theme.theme.peaceColor;
   }
-  console.log("=============================")
-  console.log(colorLoading)
-  console.log(applytheme)
-  console.log("=============================")
+
 
 
 
@@ -63,6 +72,16 @@ export default function Navbar() {
     updateTheme(value);
   
   };
+  
+  function changeImage(){
+   
+
+    setImg2(!img2)    
+    
+    console.log(img2)
+    
+    localStorage.setItem("img2",img2)
+  }
 
   return (
     <div
@@ -70,9 +89,13 @@ export default function Navbar() {
       style={ colorLoading ? { background: applytheme.dark, color: applytheme.light }: {}}
       //  style={{ background: applytheme.dark, color: applytheme.light }}
     >
-      <div className="logo w-[80px]  ml-2">
-       <img src={img} className="rounded-full"/>
+      <div  onDoubleClick={changeImage}  className="logo w-[80px]  ml-2 cursor-pointer">
+       
+       {img2 && <img src={icon2} />}
+       {!img2 && <img src={icon1} className="rounded-full"/> }
+        
       </div>
+      
       <Link className="flex justify-center items-center" to={"/"}><div className="heading text-xl  w-[90%] cursor-pointer font-bold">Let's Grow Together!</div></Link>
 
       <div className="theme text-base mr-1 flex w-[40%] items-center flex-col">
