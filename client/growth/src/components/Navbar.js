@@ -22,27 +22,32 @@ export default function Navbar() {
   const { changeTheme } = theme;
 
   const { anger, satisfy, stay, peace } = theme.theme;
-  
+  console.log(changeImage)
   
   let applytheme 
+  let themeName
 
   if (anger) {
+    themeName = "ANGER"
     applytheme = theme.theme.angerColor;
     if(!colorLoading){
       setcolorLoading(true)
     }
   } else if (satisfy) {
+    themeName = "SATISFY"
     applytheme = theme.theme.satisfyColor;
     if(!colorLoading){
       setcolorLoading(true)
     }
-
+    
   } else if (stay) {
+    themeName = "STAY"
     if(!colorLoading){
       setcolorLoading(true)
     }
     applytheme = theme.theme.stayColor;
   } else if (peace) {
+    themeName = "PEACE"
     if(!colorLoading){
       setcolorLoading(true)
     }
@@ -55,8 +60,7 @@ export default function Navbar() {
   const onChange = (event) => {
     const value = event.target.value;
     
-    localStorage.setItem("theme",value)
-    console.log(localStorage.getItem("theme"))
+  
     // changing theme in the mongodb
     async function updateTheme(value) {
       const response = await fetch("https://growth-app-backend.onrender.com/api/updatetheme", {
@@ -85,7 +89,7 @@ export default function Navbar() {
 
   return (
     <div
-      className="navbar flex justify-between pt-8 pb-8   "
+      className="navbar flex justify-between h-[138px] pt-8 pb-8 shadow-md  "
       style={ colorLoading ? { background: applytheme.dark, color: applytheme.light }: {}}
       //  style={{ background: applytheme.dark, color: applytheme.light }}
     >
@@ -99,7 +103,7 @@ export default function Navbar() {
       <Link className="flex justify-center items-center" to={"/"}><div className="heading text-xl  w-[90%] cursor-pointer font-bold">Let's Grow Together!</div></Link>
 
       <div className="theme text-base mr-1 flex w-[40%] items-center flex-col">
-        <span className="font-medium">THEME : <span className="font-semibold" > {localStorage.getItem("theme")}</span> </span>
+        <span className="font-medium">THEME : <span className="font-semibold" > </span>{themeName}</span>
         <select className="rounded-md w-[70%] outline-none" onChange={onChange}>
         
           <option className="text-center" value="">-choose-</option>
