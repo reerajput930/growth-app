@@ -21,6 +21,10 @@ export default function Navbar() {
     }
   } else if (satisfy) {
     applytheme = theme.theme.satisfyColor;
+    if(!colorLoading){
+      setcolorLoading(true)
+    }
+
   } else if (stay) {
     if(!colorLoading){
       setcolorLoading(true)
@@ -32,6 +36,10 @@ export default function Navbar() {
     }
     applytheme = theme.theme.peaceColor;
   }
+  console.log("=============================")
+  console.log(colorLoading)
+  console.log(applytheme)
+  console.log("=============================")
 
 
 
@@ -68,7 +76,7 @@ export default function Navbar() {
       <Link className="flex justify-center items-center" to={"/"}><div className="heading text-xl  w-[90%] cursor-pointer font-bold">Let's Grow Together!</div></Link>
 
       <div className="theme text-base mr-1 flex w-[40%] items-center flex-col">
-        <span className="font-medium">THEME : <span className="font-semibold" > {localStorage.getItem("theme").toUpperCase()}</span> </span>
+        <span className="font-medium">THEME : <span className="font-semibold" > {localStorage.getItem("theme")}</span> </span>
         <select className="rounded-md w-[70%] outline-none" onChange={onChange}>
         
           <option className="text-center" value="">-choose-</option>
