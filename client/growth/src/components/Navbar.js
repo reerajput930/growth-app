@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useThemeContext } from "../ThemeContextProvider";
 import "../index.css"
+import img from './img.jpeg'
 
 export default function Navbar() {
    const [colorLoading,setcolorLoading] = useState(false)
@@ -38,7 +39,7 @@ export default function Navbar() {
     const value = event.target.value;
     
     localStorage.setItem("theme",value)
-
+    console.log(localStorage.getItem("theme"))
     // changing theme in the mongodb
     async function updateTheme(value) {
       const response = await fetch("https://growth-app-backend.onrender.com/api/updatetheme", {
@@ -61,13 +62,16 @@ export default function Navbar() {
       style={ colorLoading ? { background: applytheme.dark, color: applytheme.light }: {}}
       //  style={{ background: applytheme.dark, color: applytheme.light }}
     >
-      <div className="logo text-3xl ml-4">LOGO</div>
-      <Link className="flex justify-center items-center" to={"/"}><div className="heading text-xl w-[90%] cursor-pointer font-bold">Let's Grow Together!</div></Link>
+      <div className="logo w-[80px]  ml-2">
+       <img src={img} className="rounded-full"/>
+      </div>
+      <Link className="flex justify-center items-center" to={"/"}><div className="heading text-xl  w-[90%] cursor-pointer font-bold">Let's Grow Together!</div></Link>
 
-      <div className="theme text-base mr-4">
-        <span className="font-medium">THEME : </span>
-        <select className="rounded-md outline-none" onChange={onChange}>
+      <div className="theme text-base mr-1 flex items-center flex-col">
+        <span className="font-medium">THEME : <span className="font-bold" > {localStorage.getItem("theme").toUpperCase()}</span> </span>
+        <select className="rounded-md w-[70%] outline-none" onChange={onChange}>
         
+          <option className="text-center" value="">-choose-</option>
           <option value="satisfy">SATISFACTION</option>
           <option value="stay">STAY</option>
           <option value="anger">ANGER</option>
