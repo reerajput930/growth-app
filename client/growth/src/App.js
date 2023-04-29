@@ -13,6 +13,8 @@ import Mr_Progress from  "./components/Mr/Progress"
 import Miss_Progress from  "./components/Miss/Progress"
 import MrCreateToDo from "./components/Mr/CreatePogress";
 import MissCreateToDo from "./components/Miss/CreateProgress";
+import MissEditProgress from "./components/Miss/EditProgress"
+import MrEditProgress from "./components/Mr/EditProgress"
 
 function App() {
   
@@ -31,6 +33,8 @@ function App() {
       <Route  path="/miss_progress" element={  <Miss_Progress/>} />
       <Route  path="/mr_progress/mr_createtodo" element={  <MrCreateToDo />}/>
       <Route  path="/miss_progress/miss_createtodo" element={  <MissCreateToDo/>} />
+      <Route  path="/miss_progress/miss_editprogress" element={  <MissEditProgress/>} />
+      <Route  path="/mr_progress/mr_editprogress" element={  <MrEditProgress/>} />
       
       </Routes>
         

@@ -67,6 +67,20 @@ router.get("/progress/alltask", async (req, res) => {
   }
 });
 
+// for fetching the particular task
+router.get("/progress/:id", async (req, res) => {
+   
+   console.log(req.params.id)
+  try {
+    const tasks = await progressModel.findById({"_id": req.params.id});
+    console.log(tasks);
+    res.status(200).json({ status: "success", tasks: tasks });
+  } catch (error) {
+    console.log(error.message);
+    res.status(404).json({ status: "failed" });
+  }
+});
+
 // deleting the data
 router.delete("/progress/remove", async (req, res) => {
   try {
@@ -108,6 +122,23 @@ router.put("/progress/updatetask", async(req,res)=>{
       res.status(404).json({status:"failed"})
   }
 })
+
+// for updating particular item
+router.put("/progress/updatetask/:id", async(req,res)=>{
+  const {taskDesc,tags} = req.body
+ 
+  console.log(req.body)
+  try {
+      const   user = await progressModel.findByIdAndUpdate({"_id" : req.params.id},{taskDesc:taskDesc , tags :tags})  
+      res.status(200).json({status:"success"})
+      
+  } catch (error) {
+      console.log("problem in update")
+      console.log(error.message)
+      res.status(404).json({status:"failed"})
+  }
+})
+
 
 
 module.exports = router

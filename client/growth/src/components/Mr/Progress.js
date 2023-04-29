@@ -160,7 +160,7 @@ export default function Tasks() {
           >
         
             DELETE   </button>
-            <Link className="" to={"/update"} ><FontAwesomeIcon  className="mt-[10px] w-3 ml-1" icon={faEdit} /></Link>
+            <Link className="" to={"/mr_progress/mr_editprogress"} onClick={()=>{ localStorage.setItem("task._id" ,task._id) }} ><FontAwesomeIcon  className="mt-[10px] w-3 ml-1" icon={faEdit} /></Link>
           {/* <button>edit</button> */}
         </div>
       </div>
