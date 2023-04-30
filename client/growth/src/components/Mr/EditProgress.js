@@ -10,6 +10,7 @@ export default function CreateTask() {
     taskDesc: "",
     tags: [],
   });
+  const [tags,setTags] = useState([])
 
   // first is to fetch the data
    useEffect(()=>{
@@ -22,6 +23,7 @@ export default function CreateTask() {
       if (data.status === "success") {
         console.log(data)
         setTask({ taskDesc: data.tasks.taskDesc,tags:data.tasks.tags});
+        setTags(data.tasks.tags)
         
       } else {
         console.log("error in fetching single task from api");
@@ -37,12 +39,16 @@ export default function CreateTask() {
   async function submitted(e) {
     e.preventDefault();
     console.log(task)
+
+    let finalTag = [...tags,...task.tags]
+    console.log(finalTag)
+
     const response = await fetch(`https://growth-app-backend.onrender.com/api/mr/progress/updatetask/${localStorage.getItem("task._id")}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(task),
+      body: JSON.stringify({task,finalTag}),
     });
     const data = await response.json();
     // console.log(data);
@@ -61,12 +67,13 @@ export default function CreateTask() {
     // <Link to={"/tasks"}></Link>
     navigate('/mr_progress');
   }
+
   // ----- func is the way to pass props from child to parent
   // ----- here passing the tags
   const pull_tags = (data) => {
-    // console.log(data);
+
     task.tags = data;
-    // console.log(task);
+  
   };
 
   // preventing the form to submit by clicking the enter
@@ -75,7 +82,15 @@ export default function CreateTask() {
      e.preventDefault();
     }
   }
-  console.log(task.tags)
+  function deltag(index){
+  
+    let newtaglist = []
+   newtaglist = tags.filter((tag,i)=>{
+         return (i !== index)
+    })
+    setTags(newtaglist)
+  }
+
   
   return (
     <div className="flex justify-center align-middle w-full" >
@@ -96,6 +111,18 @@ export default function CreateTask() {
         ></textarea>
          
          {/* tags section */}
+
+         <div className="tags--section">
+            {tags && tags.map((tag, index) => {
+              // console.log(index)
+              return (
+                <div className="tag--item">
+                  <span className="text "> {tag}</span>
+                  <span className="close" onClick={()=> deltag(index)} >&times;</span>
+                </div>
+              );
+            })}
+          </div>
         <Addtags func={pull_tags} />
 
         <button onClick={submitted} type="submit" className="bg-[#0091D5] text-white text-sm font-medium hover:bg-[#1C4E80] p-1 rounded-lg mt-14 mb-2  ">

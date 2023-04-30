@@ -28,7 +28,7 @@ export default function CreateTask() {
     }
    
     // console.log(task)
-
+ 
     setTask({
       
       taskDesc: "",
@@ -41,7 +41,8 @@ export default function CreateTask() {
   // ----- func is the way to pass props from child to parent
   // ----- here passing the tags
   const pull_tags = (data) => {
-    // console.log(data);
+    console.log("checking the pull tag function")
+    console.log(data);
     task.tags = data;
     // console.log(task);
   };
@@ -82,6 +83,6 @@ export default function CreateTask() {
         </Link>
       </form>
     </div>
-          </div>
+  </div>
   );
 }

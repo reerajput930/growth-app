@@ -125,11 +125,13 @@ router.put("/progress/updatetask", async(req,res)=>{
 
 // for updating particular item
 router.put("/progress/updatetask/:id", async(req,res)=>{
-  const {taskDesc,tags} = req.body
+  const {task,finalTag} = req.body
+  const {taskDesc} = task
  
-  console.log(req.body)
+  // console.log(taskDesc)
+  // console.log(finalTag)
   try {
-      const   user = await progressModel.findByIdAndUpdate({"_id" : req.params.id},{taskDesc:taskDesc , tags :tags})  
+      const   user = await progressModel.findByIdAndUpdate({"_id" : req.params.id},{taskDesc:taskDesc , tags :finalTag})  
       res.status(200).json({status:"success"})
       
   } catch (error) {
