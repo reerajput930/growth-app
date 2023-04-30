@@ -4,6 +4,7 @@ import { Link,useNavigate } from "react-router-dom";
 import { useThemeContext } from "../../ThemeContextProvider";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faEdit} from '@fortawesome/free-regular-svg-icons'
+import {BASE_URL} from "../Api"
 
 
 export default function Tasks() {
@@ -53,7 +54,7 @@ export default function Tasks() {
   useEffect(() => {
     async function fetchAllTasks() {
       //   // e.preventDefault();
-      const response = await fetch("https://growth-app-backend.onrender.com/api/miss/progress/alltask");
+      const response = await fetch(`${BASE_URL}/api/miss/progress/alltask`);
 
       const data = await response.json();
 
@@ -73,7 +74,7 @@ export default function Tasks() {
 
 
   async function updateTasks(task) {
-    const response = await fetch("https://growth-app-backend.onrender.com/api/miss/progress/updatetask", {
+    const response = await fetch(`${BASE_URL}/api/miss/progress/updatetask`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -113,7 +114,7 @@ export default function Tasks() {
   async function del(e, taskId) {
     e.preventDefault()
     console.log(taskId)
-    const response = await fetch("https://growth-app-backend.onrender.com/api/miss/progress/remove", {
+    const response = await fetch(`${BASE_URL}/api/miss/progress/remove`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

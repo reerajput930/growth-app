@@ -2,6 +2,7 @@ import React, { useState,useEffect } from "react";
 import { Link ,useNavigate } from "react-router-dom";
 import Addtags from "./Addtags";
 import "../CreateToDo.css"
+import {BASE_URL} from "../Api"
 
 export default function CreateTask() {
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ export default function CreateTask() {
 
     async function fetchData(){ 
       console.log(localStorage.getItem("task._id"))
-      const response  = await fetch(`https://growth-app-backend.onrender.com/api/mr/progress/${localStorage.getItem("task._id")}`)
+      const response  = await fetch(`${BASE_URL}/api/mr/progress/${localStorage.getItem("task._id")}`)
       const data = await response.json()
    
       if (data.status === "success") {
@@ -43,7 +44,7 @@ export default function CreateTask() {
     let finalTag = [...tags,...task.tags]
     console.log(finalTag)
 
-    const response = await fetch(`https://growth-app-backend.onrender.com/api/mr/progress/updatetask/${localStorage.getItem("task._id")}`, {
+    const response = await fetch(`${BASE_URL}/api/mr/progress/updatetask/${localStorage.getItem("task._id")}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link ,useNavigate } from "react-router-dom";
 import Addtags from "./Addtags";
 import "../CreateToDo.css"
+import {BASE_URL} from "../Api"
 
 export default function CreateTask() {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ export default function CreateTask() {
   async function submitted(e) {
     e.preventDefault();
     console.log(task)
-    const response = await fetch("https://growth-app-backend.onrender.com/api/miss/progress/addtask", {
+    const response = await fetch(`${BASE_URL}/api/miss/progress/addtask`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

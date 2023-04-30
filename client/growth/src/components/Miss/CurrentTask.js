@@ -3,6 +3,7 @@ import { useThemeContext } from "../../ThemeContextProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan, faCheckCircle } from "@fortawesome/free-regular-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
+import {BASE_URL} from "../Api"
 
 export default function Miss() {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ export default function Miss() {
 
   // --------------fetching (get )api-------------
   async function fetchTasks() {
-    const response = await fetch("https://growth-app-backend.onrender.com/api/miss/alltodo");
+    const response = await fetch(`${BASE_URL}/api/miss/alltodo`);
     const data = await response.json();
     // console.log(data)
     if (data.status === "success") {
@@ -33,7 +34,7 @@ export default function Miss() {
   async function submitted(e) {
     e.preventDefault();
 
-    const response = await fetch("https://growth-app-backend.onrender.com/api/miss/addtodo", {
+    const response = await fetch(`${BASE_URL}/api/miss/addtodo`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -51,7 +52,7 @@ export default function Miss() {
     e.preventDefault();
     console.log(_id);
 
-    const response = await fetch("https://growth-app-backend.onrender.com/api/miss/removetodo", {
+    const response = await fetch(`${BASE_URL}/api/miss/removetodo`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -65,7 +66,7 @@ export default function Miss() {
   // ------------- update operation put api --------------
   async function updateTask(e, _id, mark) {
     e.preventDefault();
-    const response = await fetch("https://growth-app-backend.onrender.com/api/miss/updatetodo", {
+    const response = await fetch(`${BASE_URL}/api/miss/updatetodo`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
