@@ -186,7 +186,7 @@ export default function Tasks() {
         <option  value="progress">Progress Report</option>
         <option value="curent-todo">Current Todo</option>
       </select>
-      <h1 className="heading  mt-12 font-bold text-xl ">Karan's Task progress Report!</h1>
+      <h1 className="heading  mt-12 font-bold text-xl ">Smit's Task progress Report!</h1>
       <div className="tasks--detail   ">
         {/* todo */}
         <div
