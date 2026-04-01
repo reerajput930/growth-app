@@ -167,7 +167,7 @@ export default function Mr() {
         className="mr--name text-center text-2xl font-semibold mt-14"
         style={ colorLoading ? { color: applytheme.dark }: {}}
       >
-        Karan's ToDo
+        Smit's ToDo
       </div>
       <div className="mr--input mb-8 w-[-webkit-fill-available]">
         <form onSubmit={submitted}>
